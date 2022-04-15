@@ -14,31 +14,31 @@ let calculator = {
   pressButton: function (buttonValue) {
     switch (buttonValue) {
       case "divide":
-        if (!/[/*+-.]$/.test(this.screenText)) {
+        if (/[^/*+-.]$/.test(this.screenText)) {
           this.screenText += "/";
           this.updateDisplay();
         }
         break;
       case "times":
-        if (!/[/*+-.]$/.test(this.screenText)) {
+        if (/[^/*+-.]$/.test(this.screenText)) {
           this.screenText += "*";
           this.updateDisplay();
         }
         break;
       case "plus":
-        if (!/[/*+-.]$/.test(this.screenText)) {
+        if (/[^/*+-.]$/.test(this.screenText)) {
           this.screenText += "+";
           this.updateDisplay();
         }
         break;
       case "minus":
-        if (!/[/*+-.]$/.test(this.screenText)) {
+        if (/[^/*+-.]$/.test(this.screenText)) {
           this.screenText += "-";
           this.updateDisplay();
         }
         break;
       case "dot":
-        if (!/[/*+-.]$/.test(this.screenText)) {
+        if (/[^/*+-.]$/.test(this.screenText)) {
           this.screenText += ".";
           this.updateDisplay();
         }
