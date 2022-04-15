@@ -1,34 +1,62 @@
 document
   .querySelectorAll("button")
-  .forEach((button) => button.addEventListener("click", checkButton));
+  .forEach((button) =>
+    button.addEventListener("click", (event) =>
+      calculator.pressButton(event.target.value)
+    )
+  );
 
-function checkButton(event) {
-  button = event.target.value;
-
-  if (isNaN(button)) {
-    switch (button) {
+let calculator = {
+  screenText: "0",
+  updateDisplay: function () {
+    document.querySelector("input").value = this.screenText;
+  },
+  pressButton: function (buttonValue) {
+    switch (buttonValue) {
       case "divide":
-        console.log(button);
+        if (!/[/*+-.]$/.test(this.screenText)) {
+          this.screenText += "/";
+          this.updateDisplay();
+        }
         break;
       case "times":
-        console.log(button);
+        if (!/[/*+-.]$/.test(this.screenText)) {
+          this.screenText += "*";
+          this.updateDisplay();
+        }
         break;
       case "plus":
-        console.log(button);
+        if (!/[/*+-.]$/.test(this.screenText)) {
+          this.screenText += "+";
+          this.updateDisplay();
+        }
         break;
       case "minus":
-        console.log(button);
+        if (!/[/*+-.]$/.test(this.screenText)) {
+          this.screenText += "-";
+          this.updateDisplay();
+        }
         break;
       case "dot":
-        console.log(button);
+        if (!/[/*+-.]$/.test(this.screenText)) {
+          this.screenText += ".";
+          this.updateDisplay();
+        }
         break;
       case "equals":
-        console.log(button);
+        this.screenText = eval(this.screenText).toString();
+        this.updateDisplay();
+        break;
+      default:
+        if (this.screenText === "0") {
+          this.screenText = buttonValue;
+          this.updateDisplay();
+        } else {
+          this.screenText += buttonValue;
+          this.updateDisplay();
+        }
+
         break;
     }
-  } else {
-    console.log(button);
-  }
-}
-
-function displayInput(character) {}
+  },
+};
