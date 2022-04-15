@@ -84,3 +84,7 @@ button {
   justify-content: space-evenly;
   padding: 3px;
 }
+
+button:hover {
+  background-color: gray;
+}
